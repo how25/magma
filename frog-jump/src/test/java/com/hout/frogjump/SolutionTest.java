@@ -1,4 +1,4 @@
-package com.hout.frogcrossingriver;
+package com.hout.frogjump;
 
 import org.junit.jupiter.api.Test;
 

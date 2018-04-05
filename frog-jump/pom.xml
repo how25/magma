@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>frog-crossing-river</artifactId>
+    <artifactId>frog-jump</artifactId>
     <packaging>jar</packaging>
 
-    <name>frog-crossing-river</name>
+    <name>frog-jump</name>
     <url>http://maven.apache.org</url>
 
     <properties>
