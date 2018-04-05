@@ -14,7 +14,7 @@ public class Solution {
 
         for (int i = interval.length -1 , j = 0; i >= 0;  i--) {
             j += interval[i];
-            if (canCross(interval, j-1 , i) || canCross(interval, j , i) || canCross(interval, j+1, i)){
+            if (canCross2(interval, j, i)){
                 return true;
             }
         }
@@ -29,7 +29,22 @@ public class Solution {
         return interval;
     }
 
-    public boolean canCross(int[] a, int step, int index) {
+    public boolean canCross(int[] interval, int step, int index) {
+        int b = index - step;
+        if (b < -1) return false;
+        for (int j =0;index > step - 2;index--) {
+            j+= interval[index];
+            if (j > step) return false;
+            if (step == j) {
+                if (canCross2(interval, step ,index)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean canCross2(int[] interval, int step, int index) {
         if (index == 0 ) {
             if (step == 1)
                 return true;
@@ -37,22 +52,11 @@ public class Solution {
                 return false;
         }
         index--;
-
         if (step == 0) {
             return false;
         }
+        return (step > 1 && canCross(interval, step -1 , index)) || canCross(interval, step  ,index) || canCross(interval, step +1 ,index);
 
-        int b = index - step;
-        if (b < -1) return false;
-        for (int j =0;index > step - 2;index--) {
-            j+= a[index];
-            if (j > step) return false;
-            if (step == j) {
-                if (canCross(a, step -1 , index) || canCross(a, step  ,index) || canCross(a, step +1 ,index)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+
     }
 }
